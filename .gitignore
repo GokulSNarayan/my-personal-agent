@@ -1,1 +1,19 @@
 node_modules/
+.env
+
+# Hermes runtime state
+.hermes/logs/
+.hermes/state/
+.hermes/state.db
+.hermes/cache/
+.hermes/cron/
+.hermes/kanban/
+.hermes/kanban.db*
+.hermes/response_store.db
+.hermes/bin/
+.hermes/*.lock
+.hermes/*.log
+.hermes/.clean_shutdown
+.hermes/gateway_state.json
+.hermes/channel_directory.json
+.hermes/config.yaml.bak.*

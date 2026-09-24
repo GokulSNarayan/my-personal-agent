@@ -1,0 +1,23 @@
+services:
+  hermes:
+    image: nousresearch/hermes-agent:latest         # or nousresearch/hermes-agent:latest
+    container_name: hermes
+    restart: unless-stopped
+    command: gateway run
+    ports:
+      - "8642:8642"                  # gateway API
+      - "9119:9119"                  # dashboard (only reached when HERMES_DASHBOARD=1)
+    volumes:
+      - ./.hermes:/opt/data
+      - .:/workspace                 # your project
+    environment:
+      - HERMES_DASHBOARD=1
+      # Uncomment to forward provider keys instead of using ~/.hermes/.env:
+      # - OPENROUTER_API_KEY=${OPENROUTER_API_KEY}
+      # - ANTHROPIC_API_KEY=${ANTHROPIC_API_KEY}
+      # - OPENAI_API_KEY=${OPENAI_API_KEY}
+    deploy:
+      resources:
+        limits:
+          memory: 4G
+          cpus: "2.0"
